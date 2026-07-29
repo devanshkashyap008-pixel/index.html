@@ -3,73 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Princess ❤️</title>
+    <title>You & Me Forever ❤️</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
-            background-color: #05020a;
-            display: flex; flex-direction: column;
-            justify-content: center; align-items: center;
-            height: 100vh; overflow: hidden;
+            background-color: #040108;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
             font-family: 'Segoe UI', system-ui, sans-serif;
             user-select: none;
+            -webkit-user-select: none;
         }
 
-        canvas { display: block; position: absolute; top: 0; left: 0; z-index: 1; }
-
-        /* Floating Background Particles */
-        .bg-element {
-            position: absolute; bottom: -50px; pointer-events: none;
-            animation: floatUp 6s linear infinite; opacity: 0.3; z-index: 2;
-        }
-        @keyframes floatUp {
-            0% { transform: translateY(0) scale(0.5); opacity: 0.6; }
-            100% { transform: translateY(-115vh) scale(1.2); opacity: 0; }
-        }
-
-        /* Center Content (Crown / Love Messages) */
-        .center-box {
-            position: relative; z-index: 10; text-align: center;
-            pointer-events: none; margin-top: -20px;
-            padding: 0 15px;
-        }
-
-        .badge {
-            font-size: 3.5rem; filter: drop-shadow(0 0 15px rgba(255, 0, 81, 0.8));
-            animation: pulseGlow 1.5s ease-in-out infinite alternate;
-        }
-        @keyframes pulseGlow {
-            from { transform: scale(1); }
-            to { transform: scale(1.18); }
-        }
-
-        .subtitle {
-            color: #ffffff; font-size: 1.25rem; font-weight: 700;
-            margin-top: 15px; text-shadow: 0 0 10px #ff0055, 0 0 20px #ff0055;
-            letter-spacing: 1px;
-        }
-
-        .hint-text {
-            position: absolute; bottom: 20px; z-index: 10;
-            color: rgba(255, 255, 255, 0.5); font-size: 0.85rem;
+        canvas {
+            display: block;
         }
     </style>
 </head>
 <body>
 
-    <canvas id="heartCanvas"></canvas>
-
-    <!-- CENTER BADGE & ROMANTIC MESSAGES -->
-    <div class="center-box">
-        <div class="badge">👑❤️</div>
-        <div class="subtitle" id="dynamicMsg">You Are My Today & All Of My Tomorrows! ✨</div>
-    </div>
-
-    <div class="hint-text">✨ Screen par tap karke mera pyaar dekho!</div>
+    <canvas id="infinityCanvas"></canvas>
 
     <script>
-        const canvas = document.getElementById('heartCanvas');
+        const canvas = document.getElementById('infinityCanvas');
         const ctx = canvas.getContext('2d');
 
         function resize() {
@@ -79,87 +43,67 @@
         window.addEventListener('resize', resize);
         resize();
 
-        // Heart Math Equation
-        function getHeartPoint(t) {
-            const scale = Math.min(canvas.width, canvas.height) / 38; 
-            const x = 16 * Math.pow(Math.sin(t), 3);
-            const y = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
+        // Infinity Lemniscate Math Equation (∞ Shape)
+        function getInfinityPoint(t) {
+            // Scale according to screen width/height
+            const scale = Math.min(canvas.width, canvas.height) / 3.2;
+            const a = scale;
             
+            // Parametric Lemniscate Formula
+            const denominator = 1 + Math.sin(t) * Math.sin(t);
+            const x = (a * Math.cos(t)) / denominator;
+            const y = (a * Math.sin(t) * Math.cos(t)) / denominator;
+
             return {
-                x: canvas.width / 2 + x * scale,
-                y: canvas.height / 2 + y * scale
+                x: canvas.width / 2 + x,
+                y: canvas.height / 2 + y
             };
         }
 
-        const totalTexts = 85;
-        let offset = 0;
+        // Configuration
+        const textList = ["YOU & ME", "FOREVER", "LOVE YOU", "TOGETHER", "ALWAYS"];
+        const totalItems = 70; // Infinity loop par kitne text elements honge
+        let offset = 0; // Speed flow counter
 
-        function drawFlowingHeart() {
-            ctx.fillStyle = 'rgba(5, 2, 10, 0.18)';
+        function drawInfinityLoop() {
+            // Dark trail background for motion blur
+            ctx.fillStyle = 'rgba(4, 1, 8, 0.18)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            offset += 0.009;
+            // Flow speed increase
+            offset += 0.007;
 
-            for (let i = 0; i < totalTexts; i++) {
-                const progress = (i / totalTexts) * Math.PI * 2 + offset;
-                const point = getHeartPoint(progress);
+            for (let i = 0; i < totalItems; i++) {
+                // Loop ke around position (0 to 2*PI)
+                const progress = (i / totalItems) * Math.PI * 2 + offset;
+                const point = getInfinityPoint(progress);
 
-                const redIntensity = Math.floor(190 + Math.sin(progress * 3) * 65);
-                const color = `rgb(${redIntensity}, 20, 60)`;
+                // Words pick karna sequence me
+                const text = textList[i % textList.length];
+
+                // Dynamic Glowing Colors (Crimson Red to Neon Pink)
+                const redIntensity = Math.floor(190 + Math.sin(progress * 2) * 65);
+                const color = `rgb(${redIntensity}, 15, 60)`;
 
                 ctx.save();
                 ctx.translate(point.x, point.y);
-                ctx.font = 'bold 14px Arial, sans-serif';
-                ctx.fillStyle = color;
-                ctx.shadowColor = '#ff0033';
-                ctx.shadowBlur = 10;
 
-                ctx.fillText("LOVE YOU", 0, 0);
+                // Text Styling & Red Glow
+                ctx.font = 'bold 13px "Segoe UI", Arial, sans-serif';
+                ctx.fillStyle = color;
+                ctx.shadowColor = '#ff0044';
+                ctx.shadowBlur = 12;
+
+                ctx.fillText(text, 0, 0);
+
                 ctx.restore();
             }
 
-            requestAnimationFrame(drawFlowingHeart);
+            requestAnimationFrame(drawInfinityLoop);
         }
-        drawFlowingHeart();
 
-        // Dynamic Romantic Messages Switcher
-        const messages = [
-            "You Are My Today & All Of My Tomorrows! ✨",
-            "तुम्हारी एक मुस्कान से मेरी पूरी दुनिया रोशन हो जाती है! ❤️",
-            "You are my favorite notification! 📱💖",
-            "तुम साथ हो तो सब कुछ खूबसूरत लगता है! 🌸",
-            "I Love You So Much, My Queen! 👑❤️"
-        ];
-        let msgIndex = 0;
-        setInterval(() => {
-            msgIndex = (msgIndex + 1) % messages.length;
-            document.getElementById('dynamicMsg').innerText = messages[msgIndex];
-        }, 3200);
-
-        // Click Sparkle Effect
-        window.addEventListener('click', (e) => {
-            for(let i=0; i<15; i++) {
-                const p = document.createElement('div');
-                p.classList.add('bg-element');
-                p.innerHTML = ['❤️', '✨', '💖'][Math.floor(Math.random()*3)];
-                p.style.left = e.clientX + (Math.random()*40 - 20) + 'px';
-                p.style.top = e.clientY + 'px';
-                p.style.animationDuration = '2s';
-                document.body.appendChild(p);
-                setTimeout(() => p.remove(), 2000);
-            }
-        });
-
-        // Floating Background Elements
-        setInterval(() => {
-            const p = document.createElement('div');
-            p.classList.add('bg-element');
-            p.innerHTML = ['❤️', '💖', '✨', '🌹', '💕'][Math.floor(Math.random()*5)];
-            p.style.left = Math.random() * 100 + 'vw';
-            p.style.animationDuration = (Math.random()*3 + 4) + 's';
-            document.body.appendChild(p);
-            setTimeout(() => p.remove(), 7000);
-        }, 500);
+        // Start Animation
+        drawInfinityLoop();
     </script>
 </body>
 </html>
