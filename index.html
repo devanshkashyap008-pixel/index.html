@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moving Text Heart Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #05020a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="heartCanvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('heartCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Screen size adjust
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        // Heart Parametric Equation (Maths for Heart Shape)
+        function getHeartPoint(t) {
+            // Heart formula scale according to screen size
+            const scale = Math.min(canvas.width, canvas.height) / 35; 
+            const x = 16 * Math.pow(Math.sin(t), 3);
+            const y = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
+            
+            return {
+                x: canvas.width / 2 + x * scale,
+                y: canvas.height / 2 + y * scale
+            };
+        }
+
+        // Configuration
+        const totalTexts = 80; // Total "LOVE YOU" items in loop
+        let offset = 0; // Speed flow counter
+
+        function drawFlowingHeart() {
+            // Clear background with soft fade effect for motion trails
+            ctx.fillStyle = 'rgba(5, 2, 10, 0.2)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Flow speed increase
+            offset += 0.008;
+
+            for (let i = 0; i < totalTexts; i++) {
+                // Heart path par position calculate karna (0 to 2*PI)
+                const progress = (i / totalTexts) * Math.PI * 2 + offset;
+                const point = getHeartPoint(progress);
+
+                // Dynamic Red Colors & Glows
+                const redIntensity = Math.floor(180 + Math.sin(progress * 3) * 75);
+                const color = `rgb(${redIntensity}, 20, 60)`;
+
+                ctx.save();
+                ctx.translate(point.x, point.y);
+
+                // Text Styling & Red Glow
+                ctx.font = 'bold 15px Arial, sans-serif';
+                ctx.fillStyle = color;
+                ctx.shadowColor = '#ff0033';
+                ctx.shadowBlur = 12;
+
+                // "LOVE YOU" text render
+                ctx.fillText("LOVE YOU", 0, 0);
+
+                ctx.restore();
+            }
+
+            requestAnimationFrame(drawFlowingHeart);
+        }
+
+        // Start Animation Loop
+        drawFlowingHeart();
+    </script>
+</body>
+</html>
