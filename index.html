@@ -1,262 +1,293 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="title" content="Happy Birthday Didi">
-    <title>Happy Birthday Didi 💖</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Poppins:wght@400;600&display=swap"
-        rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <title>Happy Birthday Didi! 🎉✨</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; user-select: none; }
+        body { background: #0f0c20; color: #fff; height: 100vh; overflow: hidden; display: flex; justify-content: center; align-items: center; }
+        canvas { position: absolute; top: 0; left: 0; pointer-events: none; z-index: 99; }
+        
+        /* 12 Slide Pages */
+        .page { display: none; width: 90%; max-width: 450px; height: 85vh; background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(15px); border-radius: 25px; border: 2px solid rgba(255, 255, 255, 0.15); box-shadow: 0 15px 35px rgba(0,0,0,0.5); padding: 25px; text-align: center; position: relative; flex-direction: column; justify-content: space-between; align-items: center; animation: fadeIn 0.6s ease; }
+        .page.active { display: flex; }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        
+        h1 { font-size: 1.8rem; margin-bottom: 10px; color: #ff65a3; text-shadow: 0 0 10px #ff65a3; }
+        p { font-size: 1rem; line-height: 1.5; color: #e0e0e0; }
+        .btn { background: linear-gradient(45deg, #ff65a3, #7afcff); color: #111; border: none; padding: 12px 28px; border-radius: 30px; font-weight: bold; font-size: 1rem; cursor: pointer; box-shadow: 0 5px 15px rgba(255, 101, 163, 0.4); transition: 0.3s; margin-top: 15px; }
+        .btn:active { transform: scale(0.95); }
+
+        /* VFX Animations */
+        .glow-heart { font-size: 5rem; animation: pulse 1.2s infinite alternate; }
+        @keyframes pulse { from { transform: scale(1); filter: drop-shadow(0 0 10px #ff2a74); } to { transform: scale(1.2); filter: drop-shadow(0 0 25px #ff2a74); } }
+
+        /* CSS Cake & Candles */
+        .cake-container { position: relative; width: 180px; height: 140px; margin: 30px auto; }
+        .cake-layer { position: absolute; left: 50%; transform: translateX(-50%); border-radius: 10px 10px 0 0; }
+        .layer-bottom { bottom: 0; width: 160px; height: 50px; background: #ff477e; border-bottom: 5px solid #d90429; }
+        .layer-middle { bottom: 50px; width: 130px; height: 40px; background: #ff70a6; }
+        .layer-top { bottom: 90px; width: 100px; height: 35px; background: #ff9770; }
+        
+        /* Candles & Blow Effect */
+        .candle { width: 10px; height: 30px; background: repeating-linear-gradient(45deg, #fff, #fff 5px, #4cc9f0 5px, #4cc9f0 10px); position: absolute; top: -30px; border-radius: 3px; cursor: pointer; }
+        .candle:nth-child(1) { left: 20px; }
+        .candle:nth-child(2) { left: 45px; }
+        .candle:nth-child(3) { left: 70px; }
+        
+        .flame { width: 12px; height: 18px; background: #ffbe0b; border-radius: 50% 50% 20% 20%; position: absolute; top: -18px; left: -1px; box-shadow: 0 0 10px #ffbe0b, 0 0 20px #ff0000; animation: flicker 0.2s infinite alternate; }
+        .flame.off { display: none; }
+        @keyframes flicker { from { transform: scale(1); } to { transform: scale(1.1) rotate(2deg); } }
+
+        /* Cake Cutting Slice Effect */
+        .cake-cut-line { position: absolute; width: 4px; height: 0; background: #fff; top: 0; left: 50%; transition: height 0.5s ease; z-index: 10; }
+        .cake-cut-line.cut { height: 100%; box-shadow: 0 0 10px #fff; }
+
+        /* Games Styling */
+        .balloon-box { width: 100%; height: 250px; position: relative; overflow: hidden; border: 1px dashed rgba(255,255,255,0.2); border-radius: 15px; }
+        .balloon { width: 45px; height: 55px; border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%; position: absolute; bottom: -60px; cursor: pointer; animation: floatUp 4s infinite linear; }
+        @keyframes floatUp { to { bottom: 280px; } }
+
+        .gift-box { font-size: 5rem; cursor: pointer; transition: 0.3s; animation: bounce 1s infinite alternate; }
+        @keyframes bounce { from { transform: translateY(0); } to { transform: translateY(-15px); } }
+
+        .chat-bubble { background: rgba(255, 255, 255, 0.15); padding: 12px; border-radius: 15px; margin: 8px 0; text-align: left; font-size: 0.9rem; }
+    </style>
 </head>
-
 <body>
-    <div id="wrapper">
-        <div class="flag__birthday">
-            <img src="./images/1.png" alt="" width="350" class="flag__left">
-            <img src="./images/1.png" alt="" width="350" class="flag__right">
-        </div>
-        <div class="content">
-            <div class="left">
-                <div class="title">
-                    <h1 class="happy">
-                        <span style="--t: 4s;">H</span>
-                        <span style="--t: 4.2s;">a</span>
-                        <span style="--t: 4.4s;">p</span>
-                        <span style="--t: 4.6s;">p</span>
-                        <span style="--t: 4.8s;">y</span>
-                    </h1>
-                    <h1 class="birthday">
-                        <span style="--t: 5s;">B</span>
-                        <span style="--t: 5.2s;">i</span>
-                        <span style="--t: 5.4s;">r</span>
-                        <span style="--t: 5.6s;">t</span>
-                        <span style="--t: 5.8s;">h</span>
-                        <span style="--t: 6s;">d</span>
-                        <span style="--t: 6.2s;">a</span>
-                        <span style="--t: 6.4s;">y</span>
-                    </h1>
-                    <div class="hat">
-                        <img src="./images/hat.png" alt="" width="130">
-                    </div>
-                </div>
-                <div class="date__of__birth">
-                    <span></span>
-                </div>
-                <div class="btn">
-                    <button id="btn__letter">
-                        <div class="mail">
-                            Click Here Didi 💖
-                            <i class="fa-regular fa-envelope"></i>
-                        </div>
-                    </button>
-                </div>
-            </div>
-            <div class="right">
-                <div class="box__account">
-                    <div class="image">
-                        <!-- CHANGE: Didi ki photo yahan 'images/unnamed.png' naam se daalein -->
-                        <img src="./images/unnamed.png" alt="Didi Photo">
-                    </div>
-                    <div class="name">
-                        <i class="fa-solid fa-heart"></i>
-                        <span>Dear Best Didi</span>
-                        <i class="fa-solid fa-heart"></i>
-                    </div>
-                    <div class="balloon_one">
-                        <img width="100px" src="./images/balloon1.png" alt="">
-                    </div>
-                    <div class="balloon_two">
-                        <img width="100px" src="./images/balloon2.png" alt="">
-                    </div>
-                </div>
-                <div class="cricle">
-                    <div class="text__cricle">
-                        <span style="--i: 1;">h</span>
-                        <span style="--i: 2;">a</span>
-                        <span style="--i: 3;">p</span>
-                        <span style="--i: 4;">p</span>
-                        <span style="--i: 5;">y</span>
-                        <span style="--i: 6;">-</span>
-                        <span style="--i: 7;">b</span>
-                        <span style="--i: 8;">i</span>
-                        <span style="--i: 9;">r</span>
-                        <span style="--i: 10;">t</span>
-                        <span style="--i: 11;">h</span>
-                        <span style="--i: 12;">d</span>
-                        <span style="--i: 13;">a</span>
-                        <span style="--i: 14;">y</span>
-                        <span style="--i: 15;">-</span>
-                    </div>
-                    <i class="fa-solid fa-heart"></i>
-                </div>
-            </div>
-        </div>
-        <div class="decorate_star star1" style="--t: 15s;"></div>
-        <div class="decorate_star star2" style="--t: 15.2s;"></div>
-        <div class="decorate_star star3" style="--t: 15.4s;"></div>
-        <div class="decorate_star star4" style="--t: 15.6s;"></div>
-        <div class="decorate_star star5" style="--t: 15.8s;"></div>
-        <div class="decorate_flower--one" style="--t: 15s;">
-            <img width="20" src="./images/decorate_flower.png" alt="">
-        </div>
-        <div class="decorate_flower--two" style="--t: 15.3s;">
-            <img width="20" src="./images/decorate_flower.png" alt="">
-        </div>
-        <div class="decorate_flower--three" style="--t: 15.6s;">
-            <img width="20" src="./images/decorate_flower.png" alt="">
-        </div>
-        <div class="decorate_bottom">
-            <img src="./images/decorate.png" alt="" width="100">
-        </div>
-        <div class="smiley__icon">
-            <img src="./images/smiley_icon.png" alt="" width="100">
-        </div>
 
-        <!-- Pop-up Card Section -->
-        <div class="boxMail">
-            <i class="fa-solid fa-xmark"></i>
-            <div class="boxMail-container">
-                <div class="card1">
-                    <div class="userImg">
-                        <img src="./images/unnamed.png" alt="">
-                    </div>
-                    <h4 class="username">To: Best Didi 💖<span class="underline"></span></h4>
+    <canvas id="vfxCanvas"></canvas>
 
-                    <h3>Happy Birthday 🎉</h3>
-                    <div class="imageCute">
-                        <!-- Online Cute GIF link (broken image fix ke liye) -->
-                        <img src="https://media.giphy.com/media/l4KibWpBGWchSqCRy/giphy.gif" alt="Cute GIF">
-                    </div>
-                </div>
-                <div class="card2">
-                    <div class="card2-content">
-                        <h3>To My Dearest Didi! 💖</h3>
-                        <h2>Happy Birthday to the most amazing sister in the world! 🥳🎂
-                            Aap hamesha mere saath khadi rehti ho aur mujhe guide karti ho. I am so lucky to have you as my elder sister. May all your dreams come true this year and may you always stay smiling and happy! Always be strong and happy. Happy Birthday once again Didi! 🎈✨
-                        </h2>
-
-                        <div class="imageCute2">
-                            <!-- Online Hug GIF link -->
-                            <img src="https://media.giphy.com/media/g5R6IxEXVMJzsS20Zg/giphy.gif" alt="Cute Hug GIF">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- PAGE 1: Intro -->
+    <div class="page active" id="p1">
+        <h1>Hey Didi! 👋✨</h1>
+        <div class="glow-heart">🎁</div>
+        <p>Aapke liye ek super special surprise tayar kiya gaya hai!</p>
+        <p><i>Full Masti & Games Ahead!</i></p>
+        <button class="btn" onclick="nextPage(2)">Start Celebration 🚀</button>
     </div>
 
+    <!-- PAGE 2: Memory Warmup -->
+    <div class="page" id="p2">
+        <h1>Rules Of The Day 📜</h1>
+        <div class="chat-bubble">Rule 1: Aaj bilkul gussa nahi hona hai! 😇</div>
+        <div class="chat-bubble">Rule 2: Sabhi games complete karne padenge! 🎮</div>
+        <div class="chat-bubble">Rule 3: Party treat confirm deni padegi! 🍕</div>
+        <button class="btn" onclick="nextPage(3)">I Agree 💖</button>
+    </div>
+
+    <!-- PAGE 3: Balloon Pop Game -->
+    <div class="page" id="p3">
+        <h1>Game 1: Balloon Pop! 🎈</h1>
+        <p>Tap/Click 5 balloons to pop them and unlock the cake!</p>
+        <div class="balloon-box" id="bBox"></div>
+        <h2 id="popScore">Popped: 0/5</h2>
+        <button class="btn" id="p3Btn" style="display:none;" onclick="nextPage(4)">Next Level ➡️</button>
+    </div>
+
+    <!-- PAGE 4: Candle Blow Feature -->
+    <div class="page" id="p4">
+        <h1>Candle Blow Time! 🕯️✨</h1>
+        <p>Candles par tap/click karo unhe bujhane ke liye!</p>
+        <div class="cake-container">
+            <div class="cake-layer layer-top">
+                <div class="candle" onclick="blowCandle(1)"><div class="flame" id="flame1"></div></div>
+                <div class="candle" onclick="blowCandle(2)"><div class="flame" id="flame2"></div></div>
+                <div class="candle" onclick="blowCandle(3)"><div class="flame" id="flame3"></div></div>
+            </div>
+            <div class="cake-layer layer-middle"></div>
+            <div class="cake-layer layer-bottom"></div>
+        </div>
+        <p id="candleStatus">🕯️ 3 Candles Lighted!</p>
+        <button class="btn" id="p4Btn" style="display:none;" onclick="nextPage(5)">Make A Wish 🌟</button>
+    </div>
+
+    <!-- PAGE 5: Make a Wish -->
+    <div class="page" id="p5">
+        <h1>Make A Wish 🌠</h1>
+        <div class="glow-heart">⭐</div>
+        <p>Aankhein band kijiye aur ek pyaari si wish maang lijiye!</p>
+        <p style="margin-top:15px; color:#ff70a6;"><i>"May all your dreams come true this year!"</i></p>
+        <button class="btn" onclick="triggerConfetti(); nextPage(6);">Wish Done! 🎉</button>
+    </div>
+
+    <!-- PAGE 6: VFX Cake Cutting -->
+    <div class="page" id="p6">
+        <h1>VFX Cake Cutting! 🍰</h1>
+        <p>Cake par **Knife Button** se cut lagao!</p>
+        <div class="cake-container" style="margin-top:40px;">
+            <div class="cake-cut-line" id="cutLine"></div>
+            <div class="cake-layer layer-top"></div>
+            <div class="cake-layer layer-middle"></div>
+            <div class="cake-layer layer-bottom"></div>
+        </div>
+        <button class="btn" onclick="cutCake()">🔪 Cut Cake Now!</button>
+        <button class="btn" id="p6Btn" style="display:none;" onclick="nextPage(7)">Yummy! Next ➡️</button>
+    </div>
+
+    <!-- PAGE 7: Sister Appreciation -->
+    <div class="page" id="p7">
+        <h1>World's Best Sister 👑</h1>
+        <div class="glow-heart">💖</div>
+        <p>Aap sirf meri Didi nahi ho, meri best friend aur sabse badi supporter bhi ho!</p>
+        <p style="margin-top:10px;">Thank you for always being there for me. 💕</p>
+        <button class="btn" onclick="nextPage(8)">More Love ➡️</button>
+    </div>
+
+    <!-- PAGE 8: Catch the Gift Game -->
+    <div class="page" id="p8">
+        <h1>Game 2: Open Surprise 🎁</h1>
+        <p>Gift Box par tap karke ise kholo!</p>
+        <div class="gift-box" onclick="openGift()">🎁</div>
+        <h2 id="giftText">Tap to Open!</h2>
+        <button class="btn" id="p8Btn" style="display:none;" onclick="nextPage(9)">Claim Happiness ✨</button>
+    </div>
+
+    <!-- PAGE 9: Fun Compliments -->
+    <div class="page" id="p9">
+        <h1>Didi Special Meter 📊</h1>
+        <div class="chat-bubble">🔥 Sweetness: 1000%</div>
+        <div class="chat-bubble">⚡ Anger Level: 99% (Jab mai tang karu 😄)</div>
+        <div class="chat-bubble">💎 Heart: pure 24k Gold</div>
+        <button class="btn" onclick="nextPage(10)">Agree 100% 😂</button>
+    </div>
+
+    <!-- PAGE 10: Special Message -->
+    <div class="page" id="p10">
+        <h1>Heartfelt Message 💌</h1>
+        <div class="chat-bubble" style="font-size:1rem; text-align:center; padding:20px;">
+            "Happy Birthday Didi! Aapki life hamesha khushiyon, success aur health se bhari rahe. Lagatar muskuraate raho aur jo chahe achieve karo!" 🎂🥳
+        </div>
+        <button class="btn" onclick="nextPage(11)">Almost There ⏩</button>
+    </div>
+
+    <!-- PAGE 11: Blast VFX Celebration -->
+    <div class="page" id="p11">
+        <h1>Party Blast Time! 🎆</h1>
+        <div class="glow-heart">🥳</div>
+        <p>Screen par kahin bhi tap karke unlimited Firecrackers & Confetti phodo!</p>
+        <button class="btn" onclick="superBlast()">💥 SUPER BLAST VFX 💥</button>
+        <button class="btn" onclick="nextPage(12)">Final Page 🏆</button>
+    </div>
+
+    <!-- PAGE 12: Grand Finale -->
+    <div class="page" id="p12">
+        <h1>Happy Birthday Didi! 👑🎂</h1>
+        <div class="glow-heart">💖✨</div>
+        <p>Website Pasand Aayi Ho Toh Treat Ready Rakhna! 😉</p>
+        <button class="btn" onclick="location.reload()">Replay Celebration 🔄</button>
+    </div>
+
+    <script>
+        // Page Navigation
+        function nextPage(pageNum) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('p' + pageNum).classList.add('active');
+            triggerConfetti();
+        }
+
+        // VFX Canvas Engine
+        const canvas = document.getElementById('vfxCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let particles = [];
+        function triggerConfetti() {
+            for (let i = 0; i < 50; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
+                    color: `hsl(${Math.random() * 360}, 100%, 60%)`,
+                    size: Math.random() * 8 + 4,
+                    speedY: Math.random() * 5 + 2,
+                    speedX: Math.random() * 2 - 1
+                });
+            }
+        }
+
+        function superBlast() {
+            for (let i = 0; i < 150; i++) {
+                particles.push({
+                    x: canvas.width / 2,
+                    y: canvas.height / 2,
+                    color: `hsl(${Math.random() * 360}, 100%, 50%)`,
+                    size: Math.random() * 10 + 3,
+                    speedY: Math.random() * 12 - 6,
+                    speedX: Math.random() * 12 - 6
+                });
+            }
+        }
+
+        function animateVFX() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach((p, i) => {
+                p.y += p.speedY;
+                p.x += p.speedX;
+                ctx.fillStyle = p.color;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+                if (p.y > canvas.height) particles.splice(i, 1);
+            });
+            requestAnimationFrame(animateVFX);
+        }
+        animateVFX();
+
+        // Game 1: Balloon Pop
+        let popped = 0;
+        const bBox = document.getElementById('bBox');
+        const colors = ['#ff477e', '#7afcff', '#ffbe0b', '#4cc9f0', '#ff70a6'];
+        for (let i = 0; i < 7; i++) {
+            let b = document.createElement('div');
+            b.className = 'balloon';
+            b.style.left = (i * 14 + 5) + '%';
+            b.style.background = colors[i % colors.length];
+            b.style.animationDelay = (Math.random() * 2) + 's';
+            b.onclick = function() {
+                this.style.display = 'none';
+                popped++;
+                document.getElementById('popScore').innerText = `Popped: ${popped}/5`;
+                triggerConfetti();
+                if (popped >= 5) document.getElementById('p3Btn').style.display = 'inline-block';
+            };
+            bBox.appendChild(b);
+        }
+
+        // Game 2: Candle Blow
+        let blown = 0;
+        function blowCandle(id) {
+            let flame = document.getElementById('flame' + id);
+            if (!flame.classList.contains('off')) {
+                flame.classList.add('off');
+                blown++;
+                document.getElementById('candleStatus').innerText = `🕯️ ${3 - blown} Candles Left!`;
+                triggerConfetti();
+                if (blown === 3) {
+                    document.getElementById('candleStatus').innerText = '🎉 All Candles Blown Out! Wish Complete!';
+                    document.getElementById('p4Btn').style.display = 'inline-block';
+                }
+            }
+        }
+
+        // Game 3: Cake Cutting
+        function cutCake() {
+            document.getElementById('cutLine').classList.add('cut');
+            superBlast();
+            setTimeout(() => {
+                document.getElementById('p6Btn').style.display = 'inline-block';
+            }, 600);
+        }
+
+        // Game 4: Gift Box
+        function openGift() {
+            document.getElementById('giftText').innerText = '🎉 UNLIMITED HAPPINESS & LOVE! 💖';
+            superBlast();
+            document.getElementById('p8Btn').style.display = 'inline-block';
+        }
+    </script>
 </body>
-<script>
-    // 1. Didi ki Birthday Date yahan badlein:
-    let datetxt = "27 May";
-    
-    // 2. Secret Typing Letter Message Didi ke liye:
-    let datatxtletter = "Happy Birthday Didi! You are truly special to me. Thank you for always supporting me and bringing so much happiness into my life. Wishing you endless health, love, and success. Stay happy always! 💕";
-    let titleLetter = "To My Didi";
-    
-    let charArrDate = datetxt.split('');
-    let charArrDateLetter = datatxtletter.split('');
-    let charArrTitle = titleLetter.split('');
-    let currentIndex = 0;
-    let currentIndexLetter = 0;
-    let currentIndexTitle = 0;
-    let date__of__birth = document.querySelector(".date__of__birth span");
-    let text__letter = document.querySelector(".text__letter p");
-    
-    setTimeout(function () {
-        timeDatetxt = setInterval(function () {
-            if (currentIndex < charArrDate.length) {
-                date__of__birth.textContent += charArrDate[currentIndex];
-                currentIndex++;
-            }
-            else {
-                let i = document.createElement("i");
-                i.className = "fa-solid fa-star"
-                document.querySelector(".date__of__birth").prepend(i)
-                document.querySelector(".date__of__birth").appendChild(i.cloneNode(true))
-                clearInterval(timeDatetxt)
-            }
-        }, 100)
-    }, 12000)
-
-    var intervalContent;
-    var intervalTitle;
-    $("#btn__letter").on("click", function () {
-        $(".box__letter").slideDown()
-        setTimeout(function () {
-            $(".letter__border").slideDown();
-        }, 1000)
-        setTimeout(function () {
-            intervalTitle = setInterval(function () {
-                if (currentIndexTitle < charArrTitle.length) {
-                    document.querySelector(".title__letter").textContent += charArrTitle[currentIndexTitle];
-                    let i = document.createElement("i");
-                    i.className = "fa-solid fa-heart"
-                    document.querySelector(".title__letter").appendChild(i)
-                    currentIndexTitle++;
-                }
-                else {
-                    clearInterval(intervalTitle)
-                }
-            }, 100)
-        }, 2000)
-        setTimeout(function () {
-            if(document.querySelector("#heart__letter")) document.querySelector("#heart__letter").classList.add("animationOp");
-            if(document.querySelector(".love__img")) document.querySelector(".love__img").classList.add("animationOp");
-            if(document.querySelector("#mewmew")) document.querySelector("#mewmew").classList.add("animationOp");
-        }, 2800)
-        setTimeout(function () {
-            document.querySelectorAll(".heart").forEach((item) => {
-                item.classList.add("animation")
-            })
-        }, 3500)
-        setTimeout(function () {
-            intervalContent = setInterval(function () {
-                if (currentIndexLetter < charArrDateLetter.length) {
-                    if(text__letter) text__letter.textContent += charArrDateLetter[currentIndexLetter];
-                    currentIndexLetter++;
-                }
-                else {
-                    clearInterval(intervalContent)
-                }
-            }, 50)
-        }, 6000)
-    })
-    $(".close").on("click", function () {
-        clearInterval(intervalContent)
-        if(document.querySelector(".title__letter")) document.querySelector(".title__letter").textContent = "";
-        if(text__letter) text__letter.textContent = "";
-        currentIndexLetter = 0
-        currentIndexTitle = 0
-        if(document.querySelector("#heart__letter")) document.querySelector("#heart__letter").classList.remove("animationOp");
-        if(document.querySelector(".love__img")) document.querySelector(".love__img").classList.remove("animationOp");
-        if(document.querySelector("#mewmew")) document.querySelector("#mewmew").classList.remove("animationOp");
-        document.querySelectorAll(".heart").forEach((item) => {
-            item.classList.remove("animation")
-        })
-        $(".box__letter").slideUp();
-        $(".letter__border").slideUp();
-    })
-
-    let mailBox = document.querySelector('.mail')
-    let boxmail = document.querySelector('.boxMail')
-    var close = document.querySelector('.fa-xmark')
-    mailBox.onclick = function () {
-        mailBox.classList.toggle('active')
-        boxmail.classList.add('active')
-    }
-
-    close.addEventListener('click', function () {
-        boxmail.classList.remove('active')
-    })
-</script>
-
-</html>
+    </html>
+        
