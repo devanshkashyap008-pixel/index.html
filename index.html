@@ -6,54 +6,135 @@
     <title>Happy Birthday Didi! 🎉✨</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; user-select: none; }
-        body { background: #0f0c20; color: #fff; height: 100vh; overflow: hidden; display: flex; justify-content: center; align-items: center; }
+        
+        /* Ultra Glowing Aesthetic Background */
+        body { 
+            background: radial-gradient(circle at center, #1b0734 0%, #08020f 100%); 
+            color: #fff; 
+            height: 100vh; 
+            overflow: hidden; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+        }
+        
         canvas { position: absolute; top: 0; left: 0; pointer-events: none; z-index: 99; }
         
-        /* 12 Slide Pages */
-        .page { display: none; width: 90%; max-width: 450px; height: 85vh; background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(15px); border-radius: 25px; border: 2px solid rgba(255, 255, 255, 0.15); box-shadow: 0 15px 35px rgba(0,0,0,0.5); padding: 25px; text-align: center; position: relative; flex-direction: column; justify-content: space-between; align-items: center; animation: fadeIn 0.6s ease; }
+        /* Glowing Glassmorphism Card Design */
+        .page { 
+            display: none; 
+            width: 90%; 
+            max-width: 420px; 
+            height: 85vh; 
+            background: rgba(255, 255, 255, 0.05); 
+            backdrop-filter: blur(25px); 
+            -webkit-backdrop-filter: blur(25px);
+            border-radius: 30px; 
+            border: 2px solid rgba(255, 0, 127, 0.4); 
+            box-shadow: 0 0 30px rgba(255, 0, 127, 0.3), inset 0 0 15px rgba(0, 243, 255, 0.2); 
+            padding: 25px; 
+            text-align: center; 
+            position: relative; 
+            flex-direction: column; 
+            justify-content: space-between; 
+            align-items: center; 
+            animation: fadeIn 0.6s ease; 
+            z-index: 10; 
+        }
         .page.active { display: flex; }
         
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        @keyframes fadeIn { 
+            from { opacity: 0; transform: translateY(20px) scale(0.95); } 
+            to { opacity: 1; transform: translateY(0) scale(1); } 
+        }
         
-        h1 { font-size: 1.8rem; margin-bottom: 10px; color: #ff65a3; text-shadow: 0 0 10px #ff65a3; }
-        p { font-size: 1rem; line-height: 1.5; color: #e0e0e0; }
-        .btn { background: linear-gradient(45deg, #ff65a3, #7afcff); color: #111; border: none; padding: 12px 28px; border-radius: 30px; font-weight: bold; font-size: 1rem; cursor: pointer; box-shadow: 0 5px 15px rgba(255, 101, 163, 0.4); transition: 0.3s; margin-top: 15px; }
-        .btn:active { transform: scale(0.95); }
+        /* Neon Glowing Headings */
+        h1 { 
+            font-size: 1.8rem; 
+            margin-bottom: 10px; 
+            color: #ff007f; 
+            text-shadow: 0 0 10px #ff007f, 0 0 20px #ff007f, 0 0 40px #ff007f; 
+        }
+        p { font-size: 0.95rem; line-height: 1.5; color: #e2d9f3; }
+        
+        /* Glowing Gradient Buttons */
+        .btn { 
+            background: linear-gradient(45deg, #ff007f, #00f3ff); 
+            color: #000; 
+            border: none; 
+            padding: 14px 30px; 
+            border-radius: 30px; 
+            font-weight: 800; 
+            font-size: 1rem; 
+            cursor: pointer; 
+            box-shadow: 0 0 15px #ff007f, 0 0 25px #00f3ff; 
+            transition: 0.3s ease; 
+            margin-top: 15px; 
+            letter-spacing: 0.5px;
+        }
+        .btn:active { transform: scale(0.92); box-shadow: 0 0 5px #ff007f; }
 
-        /* VFX Animations */
-        .glow-heart { font-size: 5rem; animation: pulse 1.2s infinite alternate; }
-        @keyframes pulse { from { transform: scale(1); filter: drop-shadow(0 0 10px #ff2a74); } to { transform: scale(1.2); filter: drop-shadow(0 0 25px #ff2a74); } }
+        .glow-heart { 
+            font-size: 4.5rem; 
+            animation: pulse 1.2s infinite alternate; 
+        }
+        @keyframes pulse { 
+            from { transform: scale(1); filter: drop-shadow(0 0 10px #ff007f); } 
+            to { transform: scale(1.2); filter: drop-shadow(0 0 30px #00f3ff); } 
+        }
 
-        /* CSS Cake & Candles */
-        .cake-container { position: relative; width: 180px; height: 140px; margin: 30px auto; }
+        /* Cake & Candles */
+        .cake-container { position: relative; width: 180px; height: 140px; margin: 20px auto; }
         .cake-layer { position: absolute; left: 50%; transform: translateX(-50%); border-radius: 10px 10px 0 0; }
-        .layer-bottom { bottom: 0; width: 160px; height: 50px; background: #ff477e; border-bottom: 5px solid #d90429; }
-        .layer-middle { bottom: 50px; width: 130px; height: 40px; background: #ff70a6; }
-        .layer-top { bottom: 90px; width: 100px; height: 35px; background: #ff9770; }
+        .layer-bottom { bottom: 0; width: 160px; height: 50px; background: #ff007f; border-bottom: 5px solid #b30059; box-shadow: 0 0 15px #ff007f; }
+        .layer-middle { bottom: 50px; width: 130px; height: 40px; background: #9d4edd; box-shadow: 0 0 15px #9d4edd; }
+        .layer-top { bottom: 90px; width: 100px; height: 35px; background: #00f3ff; box-shadow: 0 0 15px #00f3ff; }
         
-        /* Candles & Blow Effect */
-        .candle { width: 10px; height: 30px; background: repeating-linear-gradient(45deg, #fff, #fff 5px, #4cc9f0 5px, #4cc9f0 10px); position: absolute; top: -30px; border-radius: 3px; cursor: pointer; }
+        .candle { width: 10px; height: 30px; background: repeating-linear-gradient(45deg, #fff, #fff 5px, #00f3ff 5px, #00f3ff 10px); position: absolute; top: -30px; border-radius: 3px; cursor: pointer; }
         .candle:nth-child(1) { left: 20px; }
         .candle:nth-child(2) { left: 45px; }
         .candle:nth-child(3) { left: 70px; }
         
-        .flame { width: 12px; height: 18px; background: #ffbe0b; border-radius: 50% 50% 20% 20%; position: absolute; top: -18px; left: -1px; box-shadow: 0 0 10px #ffbe0b, 0 0 20px #ff0000; animation: flicker 0.2s infinite alternate; }
+        .flame { width: 12px; height: 18px; background: #ffbe0b; border-radius: 50% 50% 20% 20%; position: absolute; top: -18px; left: -1px; box-shadow: 0 0 15px #ffbe0b, 0 0 30px #ff007f; animation: flicker 0.2s infinite alternate; }
         .flame.off { display: none; }
-        @keyframes flicker { from { transform: scale(1); } to { transform: scale(1.1) rotate(2deg); } }
+        @keyframes flicker { from { transform: scale(1); } to { transform: scale(1.2) rotate(3deg); } }
 
-        /* Cake Cutting Slice Effect */
-        .cake-cut-line { position: absolute; width: 4px; height: 0; background: #fff; top: 0; left: 50%; transition: height 0.5s ease; z-index: 10; }
-        .cake-cut-line.cut { height: 100%; box-shadow: 0 0 10px #fff; }
+        .cake-cut-line { position: absolute; width: 4px; height: 0; background: #fff; top: 0; left: 50%; transition: height 0.5s ease; z-index: 10; box-shadow: 0 0 15px #fff; }
+        .cake-cut-line.cut { height: 100%; }
 
-        /* Games Styling */
-        .balloon-box { width: 100%; height: 250px; position: relative; overflow: hidden; border: 1px dashed rgba(255,255,255,0.2); border-radius: 15px; }
-        .balloon { width: 45px; height: 55px; border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%; position: absolute; bottom: -60px; cursor: pointer; animation: floatUp 4s infinite linear; }
-        @keyframes floatUp { to { bottom: 280px; } }
+        /* Cake Eating Slices */
+        .slice { width: 45px; height: 45px; background: rgba(255, 0, 127, 0.4); border: 1px solid #ff007f; border-radius: 10px; cursor: pointer; display: inline-flex; justify-content: center; align-items: center; font-size: 1.3rem; transition: 0.3s; box-shadow: 0 0 10px #ff007f; }
+        .slice.eaten { opacity: 0.1; transform: scale(0.3); pointer-events: none; }
 
-        .gift-box { font-size: 5rem; cursor: pointer; transition: 0.3s; animation: bounce 1s infinite alternate; }
+        /* Balloon & Gift */
+        .balloon-box { width: 100%; height: 220px; position: relative; overflow: hidden; border: 1px dashed rgba(0, 243, 255, 0.3); border-radius: 20px; }
+        .balloon { width: 45px; height: 55px; border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%; position: absolute; bottom: -60px; cursor: pointer; animation: floatUp 4s infinite linear; filter: drop-shadow(0 0 10px currentColor); }
+        @keyframes floatUp { to { bottom: 250px; } }
+
+        .gift-box { font-size: 4.5rem; cursor: pointer; transition: 0.3s; animation: bounce 1s infinite alternate; filter: drop-shadow(0 0 20px #ff007f); }
         @keyframes bounce { from { transform: translateY(0); } to { transform: translateY(-15px); } }
 
-        .chat-bubble { background: rgba(255, 255, 255, 0.15); padding: 12px; border-radius: 15px; margin: 8px 0; text-align: left; font-size: 0.9rem; }
+        .chat-bubble { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(0, 243, 255, 0.3); padding: 12px; border-radius: 15px; margin: 6px 0; text-align: left; font-size: 0.9rem; width: 100%; box-shadow: 0 0 10px rgba(0,243,255,0.1); }
+
+        /* Input & Cards */
+        .quiz-input { width: 85%; padding: 12px; border-radius: 25px; border: 2px solid #00f3ff; background: rgba(0,0,0,0.5); color: #fff; text-align: center; margin-top: 10px; font-size: 1rem; outline: none; box-shadow: 0 0 15px rgba(0,243,255,0.4); }
+        .flip-card { background: rgba(255,255,255,0.05); border: 1px solid #00f3ff; padding: 15px; border-radius: 15px; width: 100%; margin: 5px 0; cursor: pointer; box-shadow: 0 0 10px rgba(0,243,255,0.2); transition: 0.3s; }
+        .flip-card:active { background: rgba(255, 0, 127, 0.2); }
+        
+        /* CSS Polaroid Frame */
+        .polaroid { background: #fff; color: #111; padding: 15px 15px 25px 15px; border-radius: 12px; box-shadow: 0 0 25px rgba(255,255,255,0.8); transform: rotate(-2deg); margin: 15px 0; width: 85%; }
+        .polaroid-icon { font-size: 4rem; margin-bottom: 10px; }
+        .polaroid-caption { font-size: 1.2rem; font-weight: bold; color: #ff007f; }
+
+        /* Scratch Canvas */
+        .scratch-container { position: relative; width: 260px; height: 120px; margin: 15px auto; box-shadow: 0 0 20px #ff007f; border-radius: 15px; }
+        #scratchCanvas { position: absolute; top:0; left:0; border-radius: 15px; cursor: pointer; z-index: 2; }
+        .scratch-secret { position: absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(45deg, #ff007f, #7b2cbf); border-radius: 15px; display:flex; justify-content:center; align-items:center; color:#fff; font-weight:bold; font-size:1rem; padding:10px; text-align:center; z-index: 1; text-shadow: 0 0 10px #000; }
+
+        /* Live Counter */
+        .counter-box { display: flex; justify-content: space-around; width: 100%; margin: 15px 0; }
+        .count-item { background: rgba(0, 0, 0, 0.4); border: 1px solid #ff007f; padding: 10px; border-radius: 15px; min-width: 75px; box-shadow: 0 0 10px rgba(ff,0,127,0.3); }
+        .count-item span { display: block; font-size: 1.3rem; font-weight: bold; color: #00f3ff; text-shadow: 0 0 10px #00f3ff; }
     </style>
 </head>
 <body>
@@ -64,33 +145,56 @@
     <div class="page active" id="p1">
         <h1>Hey Didi! 👋✨</h1>
         <div class="glow-heart">🎁</div>
-        <p>Aapke liye ek super special surprise tayar kiya gaya hai!</p>
-        <p><i>Full Masti & Games Ahead!</i></p>
+        <p>Aapke liye ek super grand glowing birthday surprise tayar hai!</p>
+        <p><i>Full Interactive Games, VFX & Surprises!</i></p>
         <button class="btn" onclick="nextPage(2)">Start Celebration 🚀</button>
     </div>
 
-    <!-- PAGE 2: Memory Warmup -->
+    <!-- PAGE 2: Quiz Lock Page -->
     <div class="page" id="p2">
+        <h1>Security Check 🔒</h1>
+        <p>Aage badhne ke liye answer likho:</p>
+        <p style="margin-top:10px; color:#00f3ff; text-shadow:0 0 5px #00f3ff;"><b>"Didi ko sabse jyada gussa kisse aata hai?"</b></p>
+        <input type="text" id="quizAns" class="quiz-input" placeholder="Type answer here...">
+        <p id="quizErr" style="color:#ff007f; font-size:0.8rem; margin-top:5px;"></p>
+        <button class="btn" onclick="checkQuiz()">Unlock Pages 🔑</button>
+    </div>
+
+    <!-- PAGE 3: Rules -->
+    <div class="page" id="p3">
         <h1>Rules Of The Day 📜</h1>
         <div class="chat-bubble">Rule 1: Aaj bilkul gussa nahi hona hai! 😇</div>
-        <div class="chat-bubble">Rule 2: Sabhi games complete karne padenge! 🎮</div>
+        <div class="chat-bubble">Rule 2: Sabhi 18 screens ko complete karna mandatory hai! 🎮</div>
         <div class="chat-bubble">Rule 3: Party treat confirm deni padegi! 🍕</div>
-        <button class="btn" onclick="nextPage(3)">I Agree 💖</button>
+        <button class="btn" onclick="nextPage(4)">I Agree 💖</button>
     </div>
 
-    <!-- PAGE 3: Balloon Pop Game -->
-    <div class="page" id="p3">
-        <h1>Game 1: Balloon Pop! 🎈</h1>
-        <p>Tap/Click 5 balloons to pop them and unlock the cake!</p>
-        <div class="balloon-box" id="bBox"></div>
-        <h2 id="popScore">Popped: 0/5</h2>
-        <button class="btn" id="p3Btn" style="display:none;" onclick="nextPage(4)">Next Level ➡️</button>
-    </div>
-
-    <!-- PAGE 4: Candle Blow Feature -->
+    <!-- PAGE 4: Live Age / Days Counter -->
     <div class="page" id="p4">
+        <h1>Didi's Journey ⏳</h1>
+        <p>Aap is duniya me kitni khushiyaan phaila rahi ho:</p>
+        <div class="counter-box">
+            <div class="count-item"><span id="daysCount">8760+</span>Days</div>
+            <div class="count-item"><span id="hoursCount">210240+</span>Hours</div>
+            <div class="count-item"><span id="minsCount">12614400+</span>Mins</div>
+        </div>
+        <p><i>Every single minute with you is awesome! ✨</i></p>
+        <button class="btn" onclick="nextPage(5)">Awesome ➡️</button>
+    </div>
+
+    <!-- PAGE 5: Balloon Pop Game -->
+    <div class="page" id="p5">
+        <h1>Game 1: Pop Balloons! 🎈</h1>
+        <p>5 Balloons pop karke agla stage unlock karo!</p>
+        <div class="balloon-box" id="bBox"></div>
+        <h2 id="popScore" style="font-size:1.1rem; margin-top:5px; color:#00f3ff;">Popped: 0/5</h2>
+        <button class="btn" id="p5Btn" style="display:none;" onclick="nextPage(6)">Next Level ➡️</button>
+    </div>
+
+    <!-- PAGE 6: Candle Blow Feature -->
+    <div class="page" id="p6">
         <h1>Candle Blow Time! 🕯️✨</h1>
-        <p>Candles par tap/click karo unhe bujhane ke liye!</p>
+        <p>Candles par tap karke unhe bujha do!</p>
         <div class="cake-container">
             <div class="cake-layer layer-top">
                 <div class="candle" onclick="blowCandle(1)"><div class="flame" id="flame1"></div></div>
@@ -100,110 +204,174 @@
             <div class="cake-layer layer-middle"></div>
             <div class="cake-layer layer-bottom"></div>
         </div>
-        <p id="candleStatus">🕯️ 3 Candles Lighted!</p>
-        <button class="btn" id="p4Btn" style="display:none;" onclick="nextPage(5)">Make A Wish 🌟</button>
+        <p id="candleStatus" style="color:#00f3ff;">🕯️ 3 Candles Lighted!</p>
+        <button class="btn" id="p6Btn" style="display:none;" onclick="nextPage(7)">Make A Wish 🌟</button>
     </div>
 
-    <!-- PAGE 5: Make a Wish -->
-    <div class="page" id="p5">
+    <!-- PAGE 7: Make a Wish -->
+    <div class="page" id="p7">
         <h1>Make A Wish 🌠</h1>
         <div class="glow-heart">⭐</div>
         <p>Aankhein band kijiye aur ek pyaari si wish maang lijiye!</p>
-        <p style="margin-top:15px; color:#ff70a6;"><i>"May all your dreams come true this year!"</i></p>
-        <button class="btn" onclick="triggerConfetti(); nextPage(6);">Wish Done! 🎉</button>
+        <p style="margin-top:15px; color:#00f3ff;"><i>"May all your dreams come true this year!"</i></p>
+        <button class="btn" onclick="triggerConfetti(); nextPage(8);">Wish Done! 🎉</button>
     </div>
 
-    <!-- PAGE 6: VFX Cake Cutting -->
-    <div class="page" id="p6">
+    <!-- PAGE 8: VFX Cake Cutting -->
+    <div class="page" id="p8">
         <h1>VFX Cake Cutting! 🍰</h1>
-        <p>Cake par **Knife Button** se cut lagao!</p>
-        <div class="cake-container" style="margin-top:40px;">
+        <p>Cake par cut lagane ke liye button dabayein!</p>
+        <div class="cake-container" style="margin-top:30px;">
             <div class="cake-cut-line" id="cutLine"></div>
             <div class="cake-layer layer-top"></div>
             <div class="cake-layer layer-middle"></div>
             <div class="cake-layer layer-bottom"></div>
         </div>
         <button class="btn" onclick="cutCake()">🔪 Cut Cake Now!</button>
-        <button class="btn" id="p6Btn" style="display:none;" onclick="nextPage(7)">Yummy! Next ➡️</button>
+        <button class="btn" id="p8Btn" style="display:none;" onclick="nextPage(9)">Eat Cake ➡️</button>
     </div>
 
-    <!-- PAGE 7: Sister Appreciation -->
-    <div class="page" id="p7">
-        <h1>World's Best Sister 👑</h1>
+    <!-- PAGE 9: Cake Eating Interactive Game -->
+    <div class="page" id="p9">
+        <h1>Eat The Cake! 😋</h1>
+        <p>Cake slices par tap karke unhe khao!</p>
+        <div style="display:flex; gap:10px; margin:30px 0;">
+            <div class="slice" onclick="eatSlice(this)">🍰</div>
+            <div class="slice" onclick="eatSlice(this)">🍰</div>
+            <div class="slice" onclick="eatSlice(this)">🍰</div>
+            <div class="slice" onclick="eatSlice(this)">🍰</div>
+        </div>
+        <p id="eatText" style="color:#00f3ff;">Slices Left: 4</p>
+        <button class="btn" id="p9Btn" style="display:none;" onclick="nextPage(10)">Yummy! Next ➡️</button>
+    </div>
+
+    <!-- PAGE 10: Scratch Card Game -->
+    <div class="page" id="p10">
+        <h1>Scratch Surprise! 🪙</h1>
+        <p>Screen par finger swipe karke secret wish scratch karo!</p>
+        <div class="scratch-container">
+            <div class="scratch-secret">🎂 You get 1000x Happiness & Free Pizza Treat! 🍕</div>
+            <canvas id="scratchCanvas" width="260" height="120"></canvas>
+        </div>
+        <button class="btn" onclick="nextPage(11)">Claim Wish ➡️</button>
+    </div>
+
+    <!-- PAGE 11: CSS Polaroid Frame Memory -->
+    <div class="page" id="p11">
+        <h1>Best Memory Frame 📸</h1>
+        <div class="polaroid">
+            <div class="polaroid-icon">👑</div>
+            <div class="polaroid-caption">World's Best Didi Forever!</div>
+        </div>
+        <p>No photo needed, your personality is 100% shining!</p>
+        <button class="btn" onclick="nextPage(12)">Next Memory ➡️</button>
+    </div>
+
+    <!-- PAGE 12: Sister Appreciation -->
+    <div class="page" id="p12">
+        <h1>Sister Power 👑</h1>
         <div class="glow-heart">💖</div>
-        <p>Aap sirf meri Didi nahi ho, meri best friend aur sabse badi supporter bhi ho!</p>
-        <p style="margin-top:10px;">Thank you for always being there for me. 💕</p>
-        <button class="btn" onclick="nextPage(8)">More Love ➡️</button>
+        <p>Aap sirf meri Didi nahi ho, meri best friend aur sabse badi supporter ho!</p>
+        <button class="btn" onclick="nextPage(13)">More Love ➡️</button>
     </div>
 
-    <!-- PAGE 8: Catch the Gift Game -->
-    <div class="page" id="p8">
-        <h1>Game 2: Open Surprise 🎁</h1>
+    <!-- PAGE 13: Interactive Compliment Cards -->
+    <div class="page" id="p13">
+        <h1>Tap To Reveal Cards 🃏</h1>
+        <p>Cards par tap karke secretly kholo:</p>
+        <div class="flip-card" onclick="this.innerHTML='🌸 <b style=\'color:#ff007f\'>Secret:</b> Sabse caring nature!'">Tap Card 1</div>
+        <div class="flip-card" onclick="this.innerHTML='⚡ <b style=\'color:#00f3ff\'>Secret:</b> Cute Crime Partner!'">Tap Card 2</div>
+        <div class="flip-card" onclick="this.innerHTML='💎 <b style=\'color:#ff007f\'>Secret:</b> Pure Gold Heart!'">Tap Card 3</div>
+        <button class="btn" onclick="nextPage(14)">Next ➡️</button>
+    </div>
+
+    <!-- PAGE 14: Catch the Gift Game -->
+    <div class="page" id="p14">
+        <h1>Open Surprise 🎁</h1>
         <p>Gift Box par tap karke ise kholo!</p>
         <div class="gift-box" onclick="openGift()">🎁</div>
-        <h2 id="giftText">Tap to Open!</h2>
-        <button class="btn" id="p8Btn" style="display:none;" onclick="nextPage(9)">Claim Happiness ✨</button>
+        <h2 id="giftText" style="font-size:1.1rem; color:#00f3ff;">Tap to Open!</h2>
+        <button class="btn" id="p14Btn" style="display:none;" onclick="nextPage(15)">Claim Gift ✨</button>
     </div>
 
-    <!-- PAGE 9: Fun Compliments -->
-    <div class="page" id="p9">
+    <!-- PAGE 15: Fun Compliments Meter -->
+    <div class="page" id="p15">
         <h1>Didi Special Meter 📊</h1>
         <div class="chat-bubble">🔥 Sweetness: 1000%</div>
         <div class="chat-bubble">⚡ Anger Level: 99% (Jab mai tang karu 😄)</div>
-        <div class="chat-bubble">💎 Heart: pure 24k Gold</div>
-        <button class="btn" onclick="nextPage(10)">Agree 100% 😂</button>
+        <div class="chat-bubble">💎 Heart: Pure 24k Gold</div>
+        <button class="btn" onclick="nextPage(16)">Agree 100% 😂</button>
     </div>
 
-    <!-- PAGE 10: Special Message -->
-    <div class="page" id="p10">
+    <!-- PAGE 16: Heartfelt Message -->
+    <div class="page" id="p16">
         <h1>Heartfelt Message 💌</h1>
-        <div class="chat-bubble" style="font-size:1rem; text-align:center; padding:20px;">
+        <div class="chat-bubble" style="font-size:0.95rem; text-align:center; padding:15px; border-color:#ff007f;">
             "Happy Birthday Didi! Aapki life hamesha khushiyon, success aur health se bhari rahe. Lagatar muskuraate raho aur jo chahe achieve karo!" 🎂🥳
         </div>
-        <button class="btn" onclick="nextPage(11)">Almost There ⏩</button>
+        <button class="btn" onclick="nextPage(17)">Almost There ⏩</button>
     </div>
 
-    <!-- PAGE 11: Blast VFX Celebration -->
-    <div class="page" id="p11">
+    <!-- PAGE 17: Blast VFX Celebration -->
+    <div class="page" id="p17">
         <h1>Party Blast Time! 🎆</h1>
         <div class="glow-heart">🥳</div>
-        <p>Screen par kahin bhi tap karke unlimited Firecrackers & Confetti phodo!</p>
+        <p>Screen par kahin bhi touch karke unlimited Sparklers & Explosions phodo!</p>
         <button class="btn" onclick="superBlast()">💥 SUPER BLAST VFX 💥</button>
-        <button class="btn" onclick="nextPage(12)">Final Page 🏆</button>
+        <button class="btn" onclick="nextPage(18)">Final Page 🏆</button>
     </div>
 
-    <!-- PAGE 12: Grand Finale -->
-    <div class="page" id="p12">
+    <!-- PAGE 18: Grand Finale -->
+    <div class="page" id="p18">
         <h1>Happy Birthday Didi! 👑🎂</h1>
         <div class="glow-heart">💖✨</div>
-        <p>Website Pasand Aayi Ho Toh Treat Ready Rakhna! 😉</p>
+        <p>Website Pasand Aayi Ho Toh Party Treat Ready Rakhna! 😉</p>
         <button class="btn" onclick="location.reload()">Replay Celebration 🔄</button>
     </div>
 
     <script>
-        // Page Navigation
         function nextPage(pageNum) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById('p' + pageNum).classList.add('active');
             triggerConfetti();
         }
 
-        // VFX Canvas Engine
+        // Quiz Check
+        function checkQuiz() {
+            let ans = document.getElementById('quizAns').value.toLowerCase();
+            if(ans.trim() !== "") {
+                nextPage(3);
+            } else {
+                document.getElementById('quizErr').innerText = "Kuch bhi likh do (jaise: Mujhse 😄)!";
+            }
+        }
+
+        // Glowing Canvas VFX & Particle Trail
         const canvas = document.getElementById('vfxCanvas');
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
         let particles = [];
-        function triggerConfetti() {
-            for (let i = 0; i < 50; i++) {
+        window.addEventListener('touchmove', (e) => {
+            let touch = e.touches[0];
+            for(let i=0; i<3; i++){
                 particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height - canvas.height,
-                    color: `hsl(${Math.random() * 360}, 100%, 60%)`,
+                    x: touch.clientX, y: touch.clientY,
+                    color: Math.random() > 0.5 ? '#ff007f' : '#00f3ff',
+                    size: Math.random()*6 + 2,
+                    speedY: Math.random()*2 - 1, speedX: Math.random()*2 - 1
+                });
+            }
+        });
+
+        function triggerConfetti() {
+            for (let i = 0; i < 40; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width, y: Math.random() * canvas.height - canvas.height,
+                    color: Math.random() > 0.5 ? '#ff007f' : '#00f3ff',
                     size: Math.random() * 8 + 4,
-                    speedY: Math.random() * 5 + 2,
-                    speedX: Math.random() * 2 - 1
+                    speedY: Math.random() * 5 + 2, speedX: Math.random() * 2 - 1
                 });
             }
         }
@@ -211,12 +379,10 @@
         function superBlast() {
             for (let i = 0; i < 150; i++) {
                 particles.push({
-                    x: canvas.width / 2,
-                    y: canvas.height / 2,
-                    color: `hsl(${Math.random() * 360}, 100%, 50%)`,
+                    x: canvas.width / 2, y: canvas.height / 2,
+                    color: Math.random() > 0.3 ? '#ff007f' : (Math.random() > 0.5 ? '#00f3ff' : '#ffbe0b'),
                     size: Math.random() * 10 + 3,
-                    speedY: Math.random() * 12 - 6,
-                    speedX: Math.random() * 12 - 6
+                    speedY: Math.random() * 14 - 7, speedX: Math.random() * 14 - 7
                 });
             }
         }
@@ -224,70 +390,15 @@
         function animateVFX() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             particles.forEach((p, i) => {
-                p.y += p.speedY;
-                p.x += p.speedX;
-                ctx.fillStyle = p.color;
+                p.y += p.speedY; p.x += p.speedX;
+                ctx.fillStyle = p.color; 
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = p.color;
                 ctx.beginPath();
-                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                ctx.fill();
-                if (p.y > canvas.height) particles.splice(i, 1);
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill();
+                if (p.y > canvas.height || p.x > canvas.width || p.x < 0) particles.splice(i, 1);
             });
             requestAnimationFrame(animateVFX);
         }
         animateVFX();
-
-        // Game 1: Balloon Pop
-        let popped = 0;
-        const bBox = document.getElementById('bBox');
-        const colors = ['#ff477e', '#7afcff', '#ffbe0b', '#4cc9f0', '#ff70a6'];
-        for (let i = 0; i < 7; i++) {
-            let b = document.createElement('div');
-            b.className = 'balloon';
-            b.style.left = (i * 14 + 5) + '%';
-            b.style.background = colors[i % colors.length];
-            b.style.animationDelay = (Math.random() * 2) + 's';
-            b.onclick = function() {
-                this.style.display = 'none';
-                popped++;
-                document.getElementById('popScore').innerText = `Popped: ${popped}/5`;
-                triggerConfetti();
-                if (popped >= 5) document.getElementById('p3Btn').style.display = 'inline-block';
-            };
-            bBox.appendChild(b);
-        }
-
-        // Game 2: Candle Blow
-        let blown = 0;
-        function blowCandle(id) {
-            let flame = document.getElementById('flame' + id);
-            if (!flame.classList.contains('off')) {
-                flame.classList.add('off');
-                blown++;
-                document.getElementById('candleStatus').innerText = `🕯️ ${3 - blown} Candles Left!`;
-                triggerConfetti();
-                if (blown === 3) {
-                    document.getElementById('candleStatus').innerText = '🎉 All Candles Blown Out! Wish Complete!';
-                    document.getElementById('p4Btn').style.display = 'inline-block';
-                }
-            }
-        }
-
-        // Game 3: Cake Cutting
-        function cutCake() {
-            document.getElementById('cutLine').classList.add('cut');
-            superBlast();
-            setTimeout(() => {
-                document.getElementById('p6Btn').style.display = 'inline-block';
-            }, 600);
-        }
-
-        // Game 4: Gift Box
-        function openGift() {
-            document.getElementById('giftText').innerText = '🎉 UNLIMITED HAPPINESS & LOVE! 💖';
-            superBlast();
-            document.getElementById('p8Btn').style.display = 'inline-block';
-        }
-    </script>
-</body>
-    </html>
-        
+            
