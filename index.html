@@ -1,109 +1,262 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>You & Me Forever ❤️</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: #040108;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            user-select: none;
-            -webkit-user-select: none;
-        }
-
-        canvas {
-            display: block;
-        }
-    </style>
+    <meta name="title" content="Happy Birthday Didi">
+    <title>Happy Birthday Didi 💖</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Poppins:wght@400;600&display=swap"
+        rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
+
 <body>
+    <div id="wrapper">
+        <div class="flag__birthday">
+            <img src="./images/1.png" alt="" width="350" class="flag__left">
+            <img src="./images/1.png" alt="" width="350" class="flag__right">
+        </div>
+        <div class="content">
+            <div class="left">
+                <div class="title">
+                    <h1 class="happy">
+                        <span style="--t: 4s;">H</span>
+                        <span style="--t: 4.2s;">a</span>
+                        <span style="--t: 4.4s;">p</span>
+                        <span style="--t: 4.6s;">p</span>
+                        <span style="--t: 4.8s;">y</span>
+                    </h1>
+                    <h1 class="birthday">
+                        <span style="--t: 5s;">B</span>
+                        <span style="--t: 5.2s;">i</span>
+                        <span style="--t: 5.4s;">r</span>
+                        <span style="--t: 5.6s;">t</span>
+                        <span style="--t: 5.8s;">h</span>
+                        <span style="--t: 6s;">d</span>
+                        <span style="--t: 6.2s;">a</span>
+                        <span style="--t: 6.4s;">y</span>
+                    </h1>
+                    <div class="hat">
+                        <img src="./images/hat.png" alt="" width="130">
+                    </div>
+                </div>
+                <div class="date__of__birth">
+                    <span></span>
+                </div>
+                <div class="btn">
+                    <button id="btn__letter">
+                        <div class="mail">
+                            Click Here Didi 💖
+                            <i class="fa-regular fa-envelope"></i>
+                        </div>
+                    </button>
+                </div>
+            </div>
+            <div class="right">
+                <div class="box__account">
+                    <div class="image">
+                        <!-- CHANGE: Didi ki photo yahan 'images/unnamed.png' naam se daalein -->
+                        <img src="./images/unnamed.png" alt="Didi Photo">
+                    </div>
+                    <div class="name">
+                        <i class="fa-solid fa-heart"></i>
+                        <span>Dear Best Didi</span>
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <div class="balloon_one">
+                        <img width="100px" src="./images/balloon1.png" alt="">
+                    </div>
+                    <div class="balloon_two">
+                        <img width="100px" src="./images/balloon2.png" alt="">
+                    </div>
+                </div>
+                <div class="cricle">
+                    <div class="text__cricle">
+                        <span style="--i: 1;">h</span>
+                        <span style="--i: 2;">a</span>
+                        <span style="--i: 3;">p</span>
+                        <span style="--i: 4;">p</span>
+                        <span style="--i: 5;">y</span>
+                        <span style="--i: 6;">-</span>
+                        <span style="--i: 7;">b</span>
+                        <span style="--i: 8;">i</span>
+                        <span style="--i: 9;">r</span>
+                        <span style="--i: 10;">t</span>
+                        <span style="--i: 11;">h</span>
+                        <span style="--i: 12;">d</span>
+                        <span style="--i: 13;">a</span>
+                        <span style="--i: 14;">y</span>
+                        <span style="--i: 15;">-</span>
+                    </div>
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+            </div>
+        </div>
+        <div class="decorate_star star1" style="--t: 15s;"></div>
+        <div class="decorate_star star2" style="--t: 15.2s;"></div>
+        <div class="decorate_star star3" style="--t: 15.4s;"></div>
+        <div class="decorate_star star4" style="--t: 15.6s;"></div>
+        <div class="decorate_star star5" style="--t: 15.8s;"></div>
+        <div class="decorate_flower--one" style="--t: 15s;">
+            <img width="20" src="./images/decorate_flower.png" alt="">
+        </div>
+        <div class="decorate_flower--two" style="--t: 15.3s;">
+            <img width="20" src="./images/decorate_flower.png" alt="">
+        </div>
+        <div class="decorate_flower--three" style="--t: 15.6s;">
+            <img width="20" src="./images/decorate_flower.png" alt="">
+        </div>
+        <div class="decorate_bottom">
+            <img src="./images/decorate.png" alt="" width="100">
+        </div>
+        <div class="smiley__icon">
+            <img src="./images/smiley_icon.png" alt="" width="100">
+        </div>
 
-    <canvas id="infinityCanvas"></canvas>
+        <!-- Pop-up Card Section -->
+        <div class="boxMail">
+            <i class="fa-solid fa-xmark"></i>
+            <div class="boxMail-container">
+                <div class="card1">
+                    <div class="userImg">
+                        <img src="./images/unnamed.png" alt="">
+                    </div>
+                    <h4 class="username">To: Best Didi 💖<span class="underline"></span></h4>
 
-    <script>
-        const canvas = document.getElementById('infinityCanvas');
-        const ctx = canvas.getContext('2d');
+                    <h3>Happy Birthday 🎉</h3>
+                    <div class="imageCute">
+                        <!-- Online Cute GIF link (broken image fix ke liye) -->
+                        <img src="https://media.giphy.com/media/l4KibWpBGWchSqCRy/giphy.gif" alt="Cute GIF">
+                    </div>
+                </div>
+                <div class="card2">
+                    <div class="card2-content">
+                        <h3>To My Dearest Didi! 💖</h3>
+                        <h2>Happy Birthday to the most amazing sister in the world! 🥳🎂
+                            Aap hamesha mere saath khadi rehti ho aur mujhe guide karti ho. I am so lucky to have you as my elder sister. May all your dreams come true this year and may you always stay smiling and happy! Always be strong and happy. Happy Birthday once again Didi! 🎈✨
+                        </h2>
 
-        function resize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resize);
-        resize();
+                        <div class="imageCute2">
+                            <!-- Online Hug GIF link -->
+                            <img src="https://media.giphy.com/media/g5R6IxEXVMJzsS20Zg/giphy.gif" alt="Cute Hug GIF">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        // Infinity Lemniscate Math Equation (∞ Shape)
-        function getInfinityPoint(t) {
-            // Scale according to screen width/height
-            const scale = Math.min(canvas.width, canvas.height) / 3.2;
-            const a = scale;
-            
-            // Parametric Lemniscate Formula
-            const denominator = 1 + Math.sin(t) * Math.sin(t);
-            const x = (a * Math.cos(t)) / denominator;
-            const y = (a * Math.sin(t) * Math.cos(t)) / denominator;
-
-            return {
-                x: canvas.width / 2 + x,
-                y: canvas.height / 2 + y
-            };
-        }
-
-        // Configuration
-        const textList = ["YOU & ME", "FOREVER", "LOVE YOU", "TOGETHER", "ALWAYS"];
-        const totalItems = 70; // Infinity loop par kitne text elements honge
-        let offset = 0; // Speed flow counter
-
-        function drawInfinityLoop() {
-            // Dark trail background for motion blur
-            ctx.fillStyle = 'rgba(4, 1, 8, 0.18)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            // Flow speed increase
-            offset += 0.007;
-
-            for (let i = 0; i < totalItems; i++) {
-                // Loop ke around position (0 to 2*PI)
-                const progress = (i / totalItems) * Math.PI * 2 + offset;
-                const point = getInfinityPoint(progress);
-
-                // Words pick karna sequence me
-                const text = textList[i % textList.length];
-
-                // Dynamic Glowing Colors (Crimson Red to Neon Pink)
-                const redIntensity = Math.floor(190 + Math.sin(progress * 2) * 65);
-                const color = `rgb(${redIntensity}, 15, 60)`;
-
-                ctx.save();
-                ctx.translate(point.x, point.y);
-
-                // Text Styling & Red Glow
-                ctx.font = 'bold 13px "Segoe UI", Arial, sans-serif';
-                ctx.fillStyle = color;
-                ctx.shadowColor = '#ff0044';
-                ctx.shadowBlur = 12;
-
-                ctx.fillText(text, 0, 0);
-
-                ctx.restore();
-            }
-
-            requestAnimationFrame(drawInfinityLoop);
-        }
-
-        // Start Animation
-        drawInfinityLoop();
-    </script>
 </body>
+<script>
+    // 1. Didi ki Birthday Date yahan badlein:
+    let datetxt = "27 May";
+    
+    // 2. Secret Typing Letter Message Didi ke liye:
+    let datatxtletter = "Happy Birthday Didi! You are truly special to me. Thank you for always supporting me and bringing so much happiness into my life. Wishing you endless health, love, and success. Stay happy always! 💕";
+    let titleLetter = "To My Didi";
+    
+    let charArrDate = datetxt.split('');
+    let charArrDateLetter = datatxtletter.split('');
+    let charArrTitle = titleLetter.split('');
+    let currentIndex = 0;
+    let currentIndexLetter = 0;
+    let currentIndexTitle = 0;
+    let date__of__birth = document.querySelector(".date__of__birth span");
+    let text__letter = document.querySelector(".text__letter p");
+    
+    setTimeout(function () {
+        timeDatetxt = setInterval(function () {
+            if (currentIndex < charArrDate.length) {
+                date__of__birth.textContent += charArrDate[currentIndex];
+                currentIndex++;
+            }
+            else {
+                let i = document.createElement("i");
+                i.className = "fa-solid fa-star"
+                document.querySelector(".date__of__birth").prepend(i)
+                document.querySelector(".date__of__birth").appendChild(i.cloneNode(true))
+                clearInterval(timeDatetxt)
+            }
+        }, 100)
+    }, 12000)
+
+    var intervalContent;
+    var intervalTitle;
+    $("#btn__letter").on("click", function () {
+        $(".box__letter").slideDown()
+        setTimeout(function () {
+            $(".letter__border").slideDown();
+        }, 1000)
+        setTimeout(function () {
+            intervalTitle = setInterval(function () {
+                if (currentIndexTitle < charArrTitle.length) {
+                    document.querySelector(".title__letter").textContent += charArrTitle[currentIndexTitle];
+                    let i = document.createElement("i");
+                    i.className = "fa-solid fa-heart"
+                    document.querySelector(".title__letter").appendChild(i)
+                    currentIndexTitle++;
+                }
+                else {
+                    clearInterval(intervalTitle)
+                }
+            }, 100)
+        }, 2000)
+        setTimeout(function () {
+            if(document.querySelector("#heart__letter")) document.querySelector("#heart__letter").classList.add("animationOp");
+            if(document.querySelector(".love__img")) document.querySelector(".love__img").classList.add("animationOp");
+            if(document.querySelector("#mewmew")) document.querySelector("#mewmew").classList.add("animationOp");
+        }, 2800)
+        setTimeout(function () {
+            document.querySelectorAll(".heart").forEach((item) => {
+                item.classList.add("animation")
+            })
+        }, 3500)
+        setTimeout(function () {
+            intervalContent = setInterval(function () {
+                if (currentIndexLetter < charArrDateLetter.length) {
+                    if(text__letter) text__letter.textContent += charArrDateLetter[currentIndexLetter];
+                    currentIndexLetter++;
+                }
+                else {
+                    clearInterval(intervalContent)
+                }
+            }, 50)
+        }, 6000)
+    })
+    $(".close").on("click", function () {
+        clearInterval(intervalContent)
+        if(document.querySelector(".title__letter")) document.querySelector(".title__letter").textContent = "";
+        if(text__letter) text__letter.textContent = "";
+        currentIndexLetter = 0
+        currentIndexTitle = 0
+        if(document.querySelector("#heart__letter")) document.querySelector("#heart__letter").classList.remove("animationOp");
+        if(document.querySelector(".love__img")) document.querySelector(".love__img").classList.remove("animationOp");
+        if(document.querySelector("#mewmew")) document.querySelector("#mewmew").classList.remove("animationOp");
+        document.querySelectorAll(".heart").forEach((item) => {
+            item.classList.remove("animation")
+        })
+        $(".box__letter").slideUp();
+        $(".letter__border").slideUp();
+    })
+
+    let mailBox = document.querySelector('.mail')
+    let boxmail = document.querySelector('.boxMail')
+    var close = document.querySelector('.fa-xmark')
+    mailBox.onclick = function () {
+        mailBox.classList.toggle('active')
+        boxmail.classList.add('active')
+    }
+
+    close.addEventListener('click', function () {
+        boxmail.classList.remove('active')
+    })
+</script>
+
 </html>
