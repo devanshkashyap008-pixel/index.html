@@ -22,113 +22,79 @@
         .page { 
             display: none; 
             width: 90%; 
-            max-width: 420px; 
+            max-width: 400px; 
             height: 85vh; 
+            max-height: 650px;
             background: rgba(255, 255, 255, 0.05); 
-            backdrop-filter: blur(25px); 
-            -webkit-backdrop-filter: blur(25px);
-            border-radius: 30px; 
+            backdrop-filter: blur(20px); 
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 25px; 
             border: 2px solid rgba(255, 0, 127, 0.4); 
-            box-shadow: 0 0 30px rgba(255, 0, 127, 0.3), inset 0 0 15px rgba(0, 243, 255, 0.2); 
-            padding: 25px; 
+            box-shadow: 0 0 25px rgba(255, 0, 127, 0.3); 
+            padding: 20px; 
             text-align: center; 
             position: relative; 
             flex-direction: column; 
             justify-content: space-between; 
             align-items: center; 
-            animation: fadeIn 0.4s ease; 
             z-index: 10; 
         }
         .page.active { display: flex !important; }
         
-        @keyframes fadeIn { 
-            from { opacity: 0; transform: translateY(15px); } 
-            to { opacity: 1; transform: translateY(0); } 
-        }
-        
-        h1 { 
-            font-size: 1.8rem; 
-            margin-bottom: 10px; 
-            color: #ff007f; 
-            text-shadow: 0 0 10px #ff007f, 0 0 20px #ff007f; 
-        }
-        p { font-size: 0.95rem; line-height: 1.5; color: #e2d9f3; }
+        h1 { font-size: 1.6rem; color: #ff007f; text-shadow: 0 0 10px #ff007f; }
+        p { font-size: 0.9rem; line-height: 1.4; color: #e2d9f3; }
         
         .btn { 
             background: linear-gradient(45deg, #ff007f, #00f3ff); 
             color: #000; 
             border: none; 
-            padding: 14px 30px; 
-            border-radius: 30px; 
+            padding: 12px 25px; 
+            border-radius: 25px; 
             font-weight: 800; 
-            font-size: 1rem; 
+            font-size: 0.95rem; 
             cursor: pointer; 
-            box-shadow: 0 0 15px #ff007f, 0 0 25px #00f3ff; 
-            transition: 0.2s ease; 
-            margin-top: 15px; 
-        }
-        .btn:active { transform: scale(0.92); }
-
-        .glow-heart { 
-            font-size: 4.5rem; 
-            animation: pulse 1.2s infinite alternate; 
-        }
-        @keyframes pulse { 
-            from { transform: scale(1); filter: drop-shadow(0 0 10px #ff007f); } 
-            to { transform: scale(1.2); filter: drop-shadow(0 0 30px #00f3ff); } 
+            box-shadow: 0 0 15px #ff007f; 
+            margin-top: 10px; 
         }
 
-        .cake-container { position: relative; width: 180px; height: 140px; margin: 20px auto; }
-        .cake-layer { position: absolute; left: 50%; transform: translateX(-50%); border-radius: 10px 10px 0 0; }
-        .layer-bottom { bottom: 0; width: 160px; height: 50px; background: #ff007f; border-bottom: 5px solid #b30059; box-shadow: 0 0 15px #ff007f; }
-        .layer-middle { bottom: 50px; width: 130px; height: 40px; background: #9d4edd; box-shadow: 0 0 15px #9d4edd; }
-        .layer-top { bottom: 90px; width: 100px; height: 35px; background: #00f3ff; box-shadow: 0 0 15px #00f3ff; }
+        .glow-heart { font-size: 4rem; animation: pulse 1.2s infinite alternate; }
+        @keyframes pulse { from { transform: scale(1); } to { transform: scale(1.15); } }
+
+        .cake-container { position: relative; width: 160px; height: 120px; margin: 15px auto; }
+        .cake-layer { position: absolute; left: 50%; transform: translateX(-50%); border-radius: 8px 8px 0 0; }
+        .layer-bottom { bottom: 0; width: 140px; height: 45px; background: #ff007f; }
+        .layer-middle { bottom: 45px; width: 110px; height: 35px; background: #9d4edd; }
+        .layer-top { bottom: 80px; width: 85px; height: 30px; background: #00f3ff; }
         
-        .candle { width: 10px; height: 30px; background: repeating-linear-gradient(45deg, #fff, #fff 5px, #00f3ff 5px, #00f3ff 10px); position: absolute; top: -30px; border-radius: 3px; cursor: pointer; }
-        .candle:nth-child(1) { left: 20px; }
-        .candle:nth-child(2) { left: 45px; }
-        .candle:nth-child(3) { left: 70px; }
+        .candle { width: 8px; height: 25px; background: #fff; position: absolute; top: -25px; border-radius: 2px; cursor: pointer; }
+        .candle:nth-child(1) { left: 15px; }
+        .candle:nth-child(2) { left: 38px; }
+        .candle:nth-child(3) { left: 60px; }
         
-        .flame { width: 12px; height: 18px; background: #ffbe0b; border-radius: 50% 50% 20% 20%; position: absolute; top: -18px; left: -1px; box-shadow: 0 0 15px #ffbe0b; animation: flicker 0.2s infinite alternate; }
+        .flame { width: 10px; height: 14px; background: #ffbe0b; border-radius: 50%; position: absolute; top: -14px; left: -1px; box-shadow: 0 0 10px #ffbe0b; }
         .flame.off { display: none; }
-        @keyframes flicker { from { transform: scale(1); } to { transform: scale(1.2); } }
 
-        .cake-cut-line { position: absolute; width: 4px; height: 0; background: #fff; top: 0; left: 50%; transition: height 0.5s ease; z-index: 10; box-shadow: 0 0 15px #fff; }
+        .cake-cut-line { position: absolute; width: 3px; height: 0; background: #fff; top: 0; left: 50%; transition: height 0.4s ease; z-index: 10; }
         .cake-cut-line.cut { height: 100%; }
 
-        .slice { width: 45px; height: 45px; background: rgba(255, 0, 127, 0.4); border: 1px solid #ff007f; border-radius: 10px; cursor: pointer; display: inline-flex; justify-content: center; align-items: center; font-size: 1.3rem; box-shadow: 0 0 10px #ff007f; }
+        .slice { width: 40px; height: 40px; background: rgba(255, 0, 127, 0.4); border: 1px solid #ff007f; border-radius: 8px; cursor: pointer; display: inline-flex; justify-content: center; align-items: center; font-size: 1.2rem; }
         .slice.eaten { opacity: 0.1; transform: scale(0.3); pointer-events: none; }
 
-        .balloon-box { width: 100%; height: 200px; position: relative; overflow: hidden; border: 1px dashed rgba(0, 243, 255, 0.3); border-radius: 20px; }
-        .balloon { width: 45px; height: 55px; border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%; position: absolute; bottom: -60px; cursor: pointer; animation: floatUp 4s infinite linear; }
-        @keyframes floatUp { to { bottom: 230px; } }
+        .balloon-box { width: 100%; height: 180px; position: relative; overflow: hidden; border: 1px dashed rgba(0, 243, 255, 0.3); border-radius: 15px; }
+        .balloon { width: 40px; height: 50px; border-radius: 50%; position: absolute; bottom: -50px; cursor: pointer; animation: floatUp 3.5s infinite linear; }
+        @keyframes floatUp { to { bottom: 200px; } }
 
-        .gift-box { font-size: 4.5rem; cursor: pointer; animation: bounce 1s infinite alternate; filter: drop-shadow(0 0 20px #ff007f); }
-        @keyframes bounce { from { transform: translateY(0); } to { transform: translateY(-15px); } }
+        .gift-box { font-size: 4rem; cursor: pointer; animation: bounce 1s infinite alternate; }
+        @keyframes bounce { from { transform: translateY(0); } to { transform: translateY(-10px); } }
 
-        .chat-bubble { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(0, 243, 255, 0.3); padding: 12px; border-radius: 15px; margin: 6px 0; text-align: left; font-size: 0.9rem; width: 100%; }
+        .chat-bubble { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(0, 243, 255, 0.3); padding: 10px; border-radius: 12px; margin: 5px 0; font-size: 0.85rem; width: 100%; }
 
-        .quiz-input { width: 85%; padding: 12px; border-radius: 25px; border: 2px solid #00f3ff; background: rgba(0,0,0,0.5); color: #fff; text-align: center; margin-top: 10px; font-size: 1rem; outline: none; }
-        .flip-card { background: rgba(255,255,255,0.05); border: 1px solid #00f3ff; padding: 15px; border-radius: 15px; width: 100%; margin: 5px 0; cursor: pointer; }
+        .quiz-input { width: 85%; padding: 10px; border-radius: 20px; border: 2px solid #00f3ff; background: rgba(0,0,0,0.5); color: #fff; text-align: center; margin-top: 10px; font-size: 0.9rem; outline: none; }
+        .flip-card { background: rgba(255,255,255,0.05); border: 1px solid #00f3ff; padding: 12px; border-radius: 12px; width: 100%; margin: 4px 0; cursor: pointer; font-size: 0.85rem; }
 
-        .polaroid { background: #fff; color: #111; padding: 15px 15px 25px 15px; border-radius: 12px; box-shadow: 0 0 25px rgba(255,255,255,0.8); transform: rotate(-2deg); margin: 15px 0; width: 85%; }
-        .polaroid-icon { font-size: 4rem; margin-bottom: 10px; }
-        .polaroid-caption { font-size: 1.2rem; font-weight: bold; color: #ff007f; }
-
-        .scratch-card-box { 
-            width: 100%; 
-            padding: 20px; 
-            background: linear-gradient(45deg, #ff007f, #7b2cbf); 
-            border-radius: 20px; 
-            box-shadow: 0 0 20px #ff007f; 
-            cursor: pointer; 
-            margin: 20px 0;
-            transition: 0.3s ease;
-        }
-
-        .counter-box { display: flex; justify-content: space-around; width: 100%; margin: 15px 0; }
-        .count-item { background: rgba(0, 0, 0, 0.4); border: 1px solid #ff007f; padding: 10px; border-radius: 15px; min-width: 75px; }
-        .count-item span { display: block; font-size: 1.3rem; font-weight: bold; color: #00f3ff; }
+        .counter-box { display: flex; justify-content: space-around; width: 100%; margin: 10px 0; }
+        .count-item { background: rgba(0, 0, 0, 0.4); border: 1px solid #ff007f; padding: 8px; border-radius: 12px; min-width: 70px; font-size: 0.8rem; }
+        .count-item span { display: block; font-size: 1.1rem; font-weight: bold; color: #00f3ff; }
     </style>
 </head>
 <body>
@@ -147,9 +113,9 @@
     <div class="page" id="p2">
         <h1>Security Check 🔒</h1>
         <p>Aage badhne ke liye answer likho:</p>
-        <p style="margin-top:10px; color:#00f3ff;"><b>"Didi ko sabse jyada gussa kisse aata hai?"</b></p>
+        <p style="margin-top:5px; color:#00f3ff;"><b>"Didi ko sabse jyada gussa kisse aata hai?"</b></p>
         <input type="text" id="quizAns" class="quiz-input" placeholder="Type answer here...">
-        <p id="quizErr" style="color:#ff007f; font-size:0.8rem; margin-top:5px;"></p>
+        <p id="quizErr" style="color:#ff007f; font-size:0.75rem; margin-top:3px;"></p>
         <button class="btn" onclick="checkQuiz()">Unlock Pages 🔑</button>
     </div>
 
@@ -176,16 +142,16 @@
 
     <!-- PAGE 5 -->
     <div class="page" id="p5">
-        <h1>Game 1: Pop Balloons! 🎈</h1>
+        <h1>Pop Balloons! 🎈</h1>
         <p>5 Balloons pop karke agla stage unlock karo!</p>
         <div class="balloon-box" id="bBox"></div>
-        <h2 id="popScore" style="font-size:1.1rem; margin-top:5px; color:#00f3ff;">Popped: 0/5</h2>
+        <h2 id="popScore" style="font-size:1rem; color:#00f3ff;">Popped: 0/5</h2>
         <button class="btn" id="p5Btn" style="display:none;" onclick="nextPage(6)">Next Level ➡️</button>
     </div>
 
     <!-- PAGE 6 -->
     <div class="page" id="p6">
-        <h1>Candle Blow Time! 🕯️✨</h1>
+        <h1>Candle Blow Time! 🕯️</h1>
         <p>Candles par tap karke unhe bujha do!</p>
         <div class="cake-container">
             <div class="cake-layer layer-top">
@@ -210,9 +176,9 @@
 
     <!-- PAGE 8 -->
     <div class="page" id="p8">
-        <h1>VFX Cake Cutting! 🍰</h1>
+        <h1>Cake Cutting! 🍰</h1>
         <p>Cake par cut lagane ke liye button dabayein!</p>
-        <div class="cake-container" style="margin-top:30px;">
+        <div class="cake-container" style="margin-top:20px;">
             <div class="cake-cut-line" id="cutLine"></div>
             <div class="cake-layer layer-top"></div>
             <div class="cake-layer layer-middle"></div>
@@ -226,7 +192,7 @@
     <div class="page" id="p9">
         <h1>Eat The Cake! 😋</h1>
         <p>Cake slices par tap karke unhe khao!</p>
-        <div style="display:flex; gap:10px; margin:30px 0;">
+        <div style="display:flex; gap:8px; margin:20px 0;">
             <div class="slice" onclick="eatSlice(this)">🍰</div>
             <div class="slice" onclick="eatSlice(this)">🍰</div>
             <div class="slice" onclick="eatSlice(this)">🍰</div>
@@ -238,10 +204,10 @@
 
     <!-- PAGE 10 -->
     <div class="page" id="p10">
-        <h1>Secret Surprise Card 🪙</h1>
-        <p>Card par tap karke secret wish unlock karo!</p>
-        <div class="scratch-card-box" id="scratchBox" onclick="revealSecret()">
-            <h3 id="secretText" style="font-size:1.1rem; color:#fff;">Tap To Reveal Secret 🎁</h3>
+        <h1>Secret Wish 🪙</h1>
+        <p>Card par tap karke secret wish reveal karo!</p>
+        <div class="chat-bubble" id="secretBox" style="padding:20px; cursor:pointer;" onclick="revealSecret()">
+            <h3 id="secretText">Tap To Reveal Secret 🎁</h3>
         </div>
         <button class="btn" onclick="nextPage(11)">Claim Wish ➡️</button>
     </div>
@@ -249,9 +215,9 @@
     <!-- PAGE 11 -->
     <div class="page" id="p11">
         <h1>Best Memory Frame 📸</h1>
-        <div class="polaroid">
-            <div class="polaroid-icon">👑</div>
-            <div class="polaroid-caption">World's Best Didi Forever!</div>
+        <div style="background:#fff; color:#111; padding:15px; border-radius:10px; width:80%;">
+            <div style="font-size:3.5rem;">👑</div>
+            <div style="font-weight:bold; color:#ff007f;">World's Best Didi!</div>
         </div>
         <button class="btn" onclick="nextPage(12)">Next Memory ➡️</button>
     </div>
@@ -267,19 +233,17 @@
     <!-- PAGE 13 -->
     <div class="page" id="p13">
         <h1>Tap To Reveal Cards 🃏</h1>
-        <p>Cards par tap karke secretly kholo:</p>
-        <div class="flip-card" onclick="this.innerHTML='🌸 <b style=\'color:#ff007f\'>Secret:</b> Sabse caring nature!'">Tap Card 1</div>
-        <div class="flip-card" onclick="this.innerHTML='⚡ <b style=\'color:#00f3ff\'>Secret:</b> Cute Crime Partner!'">Tap Card 2</div>
-        <div class="flip-card" onclick="this.innerHTML='💎 <b style=\'color:#ff007f\'>Secret:</b> Pure Gold Heart!'">Tap Card 3</div>
+        <div class="flip-card" onclick="this.innerHTML='🌸 <b>Secret:</b> Sabse caring nature!'">Tap Card 1</div>
+        <div class="flip-card" onclick="this.innerHTML='⚡ <b>Secret:</b> Cute Crime Partner!'">Tap Card 2</div>
+        <div class="flip-card" onclick="this.innerHTML='💎 <b>Secret:</b> Pure Gold Heart!'">Tap Card 3</div>
         <button class="btn" onclick="nextPage(14)">Next ➡️</button>
     </div>
 
     <!-- PAGE 14 -->
     <div class="page" id="p14">
         <h1>Open Surprise 🎁</h1>
-        <p>Gift Box par tap karke ise kholo!</p>
         <div class="gift-box" onclick="openGift()">🎁</div>
-        <h2 id="giftText" style="font-size:1.1rem; color:#00f3ff;">Tap to Open!</h2>
+        <h2 id="giftText" style="font-size:1rem; color:#00f3ff;">Tap to Open!</h2>
         <button class="btn" id="p14Btn" style="display:none;" onclick="nextPage(15)">Claim Gift ✨</button>
     </div>
 
@@ -295,8 +259,8 @@
     <!-- PAGE 16 -->
     <div class="page" id="p16">
         <h1>Heartfelt Message 💌</h1>
-        <div class="chat-bubble" style="font-size:0.95rem; text-align:center; padding:15px; border-color:#ff007f;">
-            "Happy Birthday Didi! Aapki life hamesha khushiyon, success aur health se bhari rahe. Lagatar muskuraate raho aur jo chahe achieve karo!" 🎂🥳
+        <div class="chat-bubble" style="text-align:center; padding:12px; border-color:#ff007f;">
+            "Happy Birthday Didi! Aapki life hamesha khushiyon, success aur health se bhari rahe. Lagatar muskuraate raho!" 🎂🥳
         </div>
         <button class="btn" onclick="nextPage(17)">Almost There ⏩</button>
     </div>
@@ -305,8 +269,8 @@
     <div class="page" id="p17">
         <h1>Party Blast Time! 🎆</h1>
         <div class="glow-heart">🥳</div>
-        <p>Screen par touch karke Sparklers & Explosions phodo!</p>
-        <button class="btn" onclick="superBlast()">💥 SUPER BLAST VFX 💥</button>
+        <p>Button par click karke explosions phodo!</p>
+        <button class="btn" onclick="superBlast()">💥 SUPER BLAST 💥</button>
         <button class="btn" onclick="nextPage(18)">Final Page 🏆</button>
     </div>
 
@@ -320,14 +284,10 @@
 
     <script>
         function nextPage(pageNum) {
-            var pages = document.getElementsByClassName('page');
-            for(var i = 0; i < pages.length; i++) {
-                pages[i].classList.remove('active');
-            }
-            var targetPage = document.getElementById('p' + pageNum);
-            if(targetPage) {
-                targetPage.classList.add('active');
-            }
+            var pages = document.querySelectorAll('.page');
+            pages.forEach(function(p) { p.classList.remove('active'); });
+            var target = document.getElementById('p' + pageNum);
+            if(target) target.classList.add('active');
             triggerConfetti();
         }
 
@@ -344,27 +304,26 @@
         var ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-
         var particles = [];
 
         function triggerConfetti() {
-            for (var i = 0; i < 30; i++) {
+            for (var i = 0; i < 25; i++) {
                 particles.push({
-                    x: Math.random() * canvas.width, y: Math.random() * canvas.height - canvas.height,
+                    x: Math.random() * canvas.width, y: -10,
                     color: Math.random() > 0.5 ? '#ff007f' : '#00f3ff',
-                    size: Math.random() * 6 + 3,
-                    speedY: Math.random() * 4 + 2, speedX: Math.random() * 2 - 1
+                    size: Math.random() * 5 + 3,
+                    speedY: Math.random() * 3 + 2, speedX: Math.random() * 2 - 1
                 });
             }
         }
 
         function superBlast() {
-            for (var i = 0; i < 100; i++) {
+            for (var i = 0; i < 80; i++) {
                 particles.push({
                     x: canvas.width / 2, y: canvas.height / 2,
-                    color: Math.random() > 0.3 ? '#ff007f' : (Math.random() > 0.5 ? '#00f3ff' : '#ffbe0b'),
-                    size: Math.random() * 8 + 3,
-                    speedY: Math.random() * 12 - 6, speedX: Math.random() * 12 - 6
+                    color: Math.random() > 0.5 ? '#ff007f' : '#00f3ff',
+                    size: Math.random() * 6 + 3,
+                    speedY: Math.random() * 10 - 5, speedX: Math.random() * 10 - 5
                 });
             }
         }
@@ -385,11 +344,10 @@
         var popped = 0;
         var bBox = document.getElementById('bBox');
         var colors = ['#ff007f', '#00f3ff', '#ffbe0b', '#9d4edd', '#ff477e'];
-        for (var i = 0; i < 6; i++) {
+        for (var i = 0; i < 5; i++) {
             var b = document.createElement('div');
-            b.className = 'balloon'; b.style.left = (i * 15 + 5) + '%';
+            b.className = 'balloon'; b.style.left = (i * 18 + 5) + '%';
             b.style.background = colors[i % colors.length];
-            b.style.animationDelay = (Math.random() * 2) + 's';
             b.onclick = function() {
                 this.style.display = 'none'; popped++;
                 document.getElementById('popScore').innerText = 'Popped: ' + popped + '/5';
@@ -404,10 +362,10 @@
             var flame = document.getElementById('flame' + id);
             if (!flame.classList.contains('off')) {
                 flame.classList.add('off'); blown++;
-                document.getElementById('candleStatus').innerText = '🕯️ ' + (3 - blown) + ' Candles Left!';
+                document.getElementById('candleStatus').innerText = '🕯️ ' + (3 - blown) + ' Left!';
                 triggerConfetti();
                 if (blown === 3) {
-                    document.getElementById('candleStatus').innerText = '🎉 All Candles Blown!';
+                    document.getElementById('candleStatus').innerText = '🎉 All Blown!';
                     document.getElementById('p6Btn').style.display = 'inline-block';
                 }
             }
@@ -416,13 +374,12 @@
         function cutCake() {
             document.getElementById('cutLine').classList.add('cut');
             superBlast();
-            setTimeout(function() { document.getElementById('p8Btn').style.display = 'inline-block'; }, 400);
+            document.getElementById('p8Btn').style.display = 'inline-block';
         }
 
         var eatenCount = 0;
         function eatSlice(el) {
-            el.classList.add('eaten');
-            eatenCount++;
+            el.classList.add('eaten'); eatenCount++;
             document.getElementById('eatText').innerText = 'Slices Left: ' + (4 - eatenCount);
             triggerConfetti();
             if(eatenCount === 4) {
@@ -437,4 +394,10 @@
         }
 
         function openGift() {
-            document.getElementById(
+            document.getElementById('giftText').innerText = '🎉 UNLIMITED HAPPINESS & LOVE! 💖';
+            superBlast();
+            document.getElementById('p14Btn').style.display = 'inline-block';
+        }
+    </script>
+</body>
+</html>
